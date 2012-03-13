@@ -33,7 +33,7 @@ viola  = {
       \clef alto
       \key g \major
       \relative c' { 
-        \repeat "volta" 2 {
+        \repeat volta 2 {
           d'4\p \< g,8(  a8) b8 c8  d4\!(  g,4)-. g4 |
           e'4 \< c8(  d8) e8 fis8  g4\!(  g,4)-. g4 |
           c4 d8(  c8) b8 a8
@@ -42,11 +42,17 @@ viola  = {
           d4 \< g,8(  a8) b8 c8  d4\!(  g,4)-. g4 |
           e'4 c8( \<  d8) e8 fis8  g4\!(  g,4)-. g4 |
           c4 d8(  c8) b8 a8 b4 c8(  b8) a8 g8 |
-          a4 b8(  a8) g8 fis8 g2.
-          \bar "|."
+          a4 b8(  a8) g8 fis8
+        } 
+       \alternative {
+          { g8 d8 g8 b8 d8 g8 }
+          {g2. 
+           \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible
+          \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+          \mark "Fine"}
         }
-	\repeat "volta" 2 {
-          b'4\mf g8(  a8) b8 g8 |
+	\repeat volta 2 {
+          b4\mf g8(  a8) b8 g8 |
           a4 d,8(  e8) fis8 d8 |
           g4 e8(  fis8) g8 d8 | cis4 b8(  cis8) a4 |
           a8( \<  b8) cis8 d8 e8  fis8\! |
@@ -54,7 +60,7 @@ viola  = {
           d4\p g,8( fis8  g4) | e'4 g,8( fis8  g4) d'4(  c4) b4 |
           a8(  g8) fis8 g8 a4 d,8( \<  e8) fis8 g8 a8  b8\! |
           c4-. b4-. a4-. b8( \>  d8) g,4-.  fis4\! g2.
-          \bar "|."
+          
         }
       }
     }
@@ -64,7 +70,7 @@ upper  = {
       \clef treble
       \key g \major
       \relative c' { 
-        \repeat "volta" 2 {
+        \repeat volta 2 {
           d'4\p \< g,8(  a8) b8 c8  d4\!(  g,4)-. g4 |
           e'4 \< c8(  d8) e8 fis8  g4\!(  g,4)-. g4 |
           c4 d8(  c8) b8 a8
@@ -73,10 +79,13 @@ upper  = {
           d4 \< g,8(  a8) b8 c8  d4\!(  g,4)-. g4 |
           e'4 c8( \<  d8) e8 fis8  g4\!(  g,4)-. g4 |
           c4 d8(  c8) b8 a8 b4 c8(  b8) a8 g8 |
-          a4 b8(  a8) g8 fis8 g2.
-          \bar "|."
+          a4 b8(  a8) g8 fis8
         }
-	\repeat "volta" 2 {
+      \alternative{
+         { g2.}
+         { g2.}
+        }
+	\repeat volta 2 {
           b'4\mf g8(  a8) b8 g8 |
           a4 d,8(  e8) fis8 d8 |
           g4 e8(  fis8) g8 d8 | cis4 b8(  cis8) a4 |
@@ -85,7 +94,6 @@ upper  = {
           d4\p g,8( fis8  g4) | e'4 g,8( fis8  g4) d'4(  c4) b4 |
           a8(  g8) fis8 g8 a4 d,8( \<  e8) fis8 g8 a8  b8\! |
           c4-. b4-. a4-. b8( \>  d8) g,4-.  fis4\! g2.
-          \bar "|."
         }
       }
     }
@@ -95,29 +103,33 @@ lower = {
       \clef bass
       \key g \major
       \relative c {
-        \repeat "volta" 2 {
-          \chordmode{g,2} a4 b2. c2. b2. a2. |
+        \repeat volta 2 {
+          \chordmode{g,2} a'4 b2. c2. b2. a2. |
           g2. d'4 b4 g4 | d'4 d,8 c'8 b8 a8 b2 a4 g4 b4 g4 |
-          c2. b4 c8(  b8) a8 g8 | a2 fis4 g2 b4 c4 d4 d,4 g4 d4 g4
-          \bar "|."
+          c2. b4 c8(  b8) a8 g8 | a2 fis4 g2 b4 c4 d4 d,4 
         }
-	\repeat "volta" 2 {
+        \alternative{ 
+          {g2 d4}
+          {g2 d4}
+        }
+	\repeat volta 2 {
           g2. fis2. e4 g4 e4 a2 a,4 a'2. |
           b4-. d4-. cis4-. d4-. fis,4-. a4-. d4(  d,4) c'4 |
-          b4 d,4 b'4 c4 e,4 c'4 b4(  a4) g4 |
-          d'2 r4 d,2 fis4 e4-. g4-. fis4-. g4(  b,4)-. d4-. g4-. d4-. g4-.
-	  \bar "|."
+          b4 d4 b4 c4 e4 c4 b4(  a4) g4 |
+          d'2 r4 d,2 fis4 e4-. g4-. fis4-. g4(  b,4)-. d4-. g4-. d4-. g,4-.
+	  \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible
+          \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+          \mark "D.C. al Fine"
         }
       }
     }
 \score {
    \context PianoStaff <<
-    \new Staff = "viola" \transpose g g \viola
-    \new Staff = "upper" \transpose g g \upper
-    \new Staff = "lower" \transpose g g \lower  
+    \new Staff = "viola" \transpose g c \viola
+    \new Staff = "upper" \transpose g c \upper
+    \new Staff = "lower" \transpose g c \lower  
     >>
-}
-  \header { piece = "ALLEGRO"}
+  \header { piece = "Moderato"}
   
   \midi {
     \context {
@@ -128,6 +140,6 @@ lower = {
 
 
   \layout {}
-
+}
 
 
