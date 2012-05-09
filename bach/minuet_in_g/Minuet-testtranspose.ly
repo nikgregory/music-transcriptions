@@ -34,27 +34,27 @@ viola  = {
       \key g \major
       \relative c' { 
         \repeat volta 2 {
-          d'4\p \< g,8(  a8) b8 c8  d4\!(  g,4)-. g4 |
-          e'4 \< c8(  d8) e8 fis8  g4\!(  g,4)-. g4 |
-          c4 d8(  c8) b8 a8
-          b4 c8(  b8) a8 g8 |
-          fis4 g8(  a8) b8 g8 b4 a2 |
-          d4 \< g,8(  a8) b8 c8  d4\!(  g,4)-. g4 |
-          e'4 c8( \<  d8) e8 fis8  g4\!(  g,4)-. g4 |
-          c4 d8(  c8) b8 a8 b4 c8(  b8) a8 g8 |
-          a4 b8(  a8) g8 fis8
+          d'4\downbow\p \< g,8\upbow(  a8) b8 c8  d4\!(  g,4)-. g4 |
+          e'4\downbow \< c8\upbow(  d8) e8 fis8  g4\!(  g,4)-. g4 |
+          c4\downbow d8(  c8) b8 a8
+          b4\upbow c8\downbow(  b8) a8 g8 |
+          fis4\downbow g8(  a8) b8 g8 b4 a2 |
+          d4\downbow \< g,8(  a8) b8 c8  d4\!(  g,4)-. g4 |
+          e'4\downbow c8( \<  d8) e8 fis8  g4\!(  g,4)-. g4 |
+          c4\downbow d8(  c8) b8 a8 b4\upbow c8(  b8) a8 g8 |
+          a4\downbow b8(  a8) g8\downbow fis8
         } 
        \alternative {
-          { g8 d8 g8 b8 d8 g8 }
+          { g8\upbow d8\downbow g8\upbow b8 d8 g8 }
           {g2. 
            \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible
           \override Score.RehearsalMark #'self-alignment-X = #RIGHT
           \mark "Fine"}
         }
 	\repeat volta 2 {
-          b4\mf g8(  a8) b8 g8 |
-          a4 d,8(  e8) fis8 d8 |
-          g4 e8(  fis8) g8 d8 | cis4 b8(  cis8) a4 |
+          b4\downbow\mf g8\upbow(  a8) b8 g8 |
+          a4\upbow d,8\downbow(  e8) fis8 d8 |
+          g4\downbow e8\upbow(  fis8) g8 d8 | cis4\upbow b8\downbow(  cis8) a4 |
           a8( \<  b8) cis8 d8 e8  fis8\! |
           g4-. fis4-. e4-. fis4-. a,4-. cis4 | d2. \> \!
           d4\p g,8( fis8  g4) | e'4 g,8( fis8  g4) d'4(  c4) b4 |
@@ -93,7 +93,7 @@ upper  = {
           g4-. fis4-. e4-. fis4-. a,4-. cis4 | d2. \> \!
           d4\p g,8( fis8  g4) | e'4 g,8( fis8  g4) d'4(  c4) b4 |
           a8(  g8) fis8 g8 a4 d,8( \<  e8) fis8 g8 a8  b8\! |
-          c4-. b4-. a4-. b8( \>  d8) g,4-.  fis4\! g2.
+          c4-. b4-. a4-. b8( \>  d8) g,4-.  fis4\! <b, d g>2.
         }
       }
     }
@@ -125,9 +125,9 @@ lower = {
     }
 \score {
    \context PianoStaff <<
-    \new Staff = "viola" \transpose g c \viola
-    \new Staff = "upper" \transpose g c \upper
-    \new Staff = "lower" \transpose g c \lower  
+    \new Staff = "viola" \transpose g g \viola
+    \new Staff = "upper" \transpose g g \upper
+    \new Staff = "lower" \transpose g g \lower  
     >>
   \header { piece = "Moderato"}
   
